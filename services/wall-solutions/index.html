@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حلول الجدران | افاق التميز للصناعه</title>
+  <meta name="description" content="تكسيات، ألواح ديكورية، عزل، وتشطيبات داخلية وخارجية.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://youssefahmed.github.io/afaaq-preview/css/site.css">
+</head>
+<body>
+  <div class="app-shell" data-view="site">
+    <header class="topbar">
+      <a class="brand" href="https://youssefahmed.github.io/afaaq-preview" aria-label="الرئيسية">
+        <span class="brand-mark">أ</span>
+        <span>
+          <strong>افاق التميز للصناعه</strong>
+          <small>حلول البولسترين والديكور</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="التنقل الرئيسي">
+        <a href="https://youssefahmed.github.io/afaaq-preview">الرئيسية</a>
+        <a href="#projects">أعمال القسم</a>
+        <a href="#booking">طلب خدمة</a>
+      </nav>
+    </header>
+
+    <main class="site-view">
+      <section class="service-hero">
+        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" alt="حلول الجدران">
+        <div class="service-hero-copy">
+          <span class="badge">حلول الجدران</span>
+          <h1>جدران تروي قصة</h1>
+          <p>تكسيات، ألواح ديكورية، عزل، وتشطيبات داخلية وخارجية.</p>
+          <a class="primary-btn" href="#booking">طلب هذه الخدمة</a>
+        </div>
+      </section>
+
+      <section class="section intro-section">
+        <div>
+          <span class="section-kicker">تفاصيل القسم</span>
+          <h2>حلول الجدران</h2>
+        </div>
+        <p>هذه صفحة مستقلة لهذا القسم، ويمكن لاحقاً ربطها بدومين فرعي خاص مثل <span dir="ltr">wall-solutions.domain.com</span> مع إبقاء نفس البيانات من لوحة الإدارة.</p>
+      </section>
+
+      <section class="section projects-section" id="projects">
+        <div class="section-head">
+          <span class="section-kicker">الأعمال</span>
+          <h2>أعمال حلول الجدران</h2>
+        </div>
+        <div class="project-grid">
+                      <article class="project-card">
+              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="ردهة استقبال فندقية" loading="lazy">
+              <div>
+                <span>حلول الجدران</span>
+                <h3>ردهة استقبال فندقية</h3>
+                <p>تكسيات جدارية وتشطيبات داخلية مناسبة للمساحات الراقية.</p>
+              </div>
+            </article>
+                  </div>
+      </section>
+
+      <section class="section booking-section" id="booking">
+        <div class="booking-copy">
+          <span class="section-kicker">طلب خدمة</span>
+          <h2>أرسل طلب حلول الجدران</h2>
+          <p>سيصل الطلب إلى قاعدة البيانات مع ربطه بهذا القسم مباشرة.</p>
+        </div>
+        <form class="booking-form" onsubmit="event.preventDefault();">
+          <input type="hidden" name="_token" value="7Ah8W99eTAtt3QMjKZZlR3zzDEJFEQPsdVyUEy5K" autocomplete="off">          <label>
+            الاسم
+            <input name="name" type="text" placeholder="مثال: محمد العتيبي" value="" required>
+          </label>
+          <label>
+            رقم الجوال
+            <input name="phone" type="tel" placeholder="+966 5x xxx xxxx" value="" required>
+          </label>
+          <label>
+            الخدمة
+            <select name="service_id" required>
+                              <option value="1" >الديكور والهندسة</option>
+                              <option value="2" >إدارة الفعاليات</option>
+                              <option value="3" selected>حلول الجدران</option>
+                              <option value="4" >منتجات وخدمات أخرى</option>
+                          </select>
+          </label>
+          <label>
+            تفاصيل المشروع
+            <textarea name="message" rows="4" placeholder="اكتب وصفاً مختصراً للموقع، المناسبة، أو المنتج المطلوب" required></textarea>
+          </label>
+          <button class="primary-btn form-btn" type="submit">إرسال الطلب</button>
+                  </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
