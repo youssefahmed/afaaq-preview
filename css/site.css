@@ -12,6 +12,9 @@
   --rose: #c76bd9;
   --danger: #e66d6d;
   --shadow: 0 24px 70px rgba(0, 0, 0, .38);
+  --theme-control-bg: #080b12;
+  --theme-control-fg: #ffffff;
+  --theme-control-border: rgba(233, 192, 92, .38);
 }
 
 * {
@@ -25,7 +28,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--ink);
+  background: var(--site-bg, var(--ink));
   color: var(--paper);
   font-family: "Tajawal", system-ui, sans-serif;
 }
@@ -35,10 +38,10 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background:
+  background: var(--site-overlay,
     radial-gradient(760px 520px at 64% 20%, rgba(49, 93, 255, .34), transparent 64%),
     radial-gradient(620px 420px at 12% 78%, rgba(85, 198, 163, .18), transparent 62%),
-    linear-gradient(180deg, #050814 0%, #080b12 52%, #11100d 100%);
+    linear-gradient(180deg, #050814 0%, #080b12 52%, #11100d 100%));
 }
 
 a {
@@ -90,7 +93,7 @@ button {
   width: 58px;
   height: 58px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, .96);
+  background: transparent;
   box-shadow: 0 10px 32px rgba(233, 192, 92, .24);
   transition: transform .3s ease, box-shadow .3s ease;
 }
@@ -100,6 +103,56 @@ button {
   width: 44px;
   height: 44px;
   object-fit: contain;
+}
+
+body.theme-light {
+  --paper: #172033;
+  --muted: #536075;
+  --line: rgba(23, 32, 51, .13);
+  --card: rgba(255, 255, 255, .72);
+  --shadow: 0 24px 70px rgba(37, 45, 65, .16);
+  --site-overlay:
+    radial-gradient(760px 520px at 64% 20%, rgba(233, 192, 92, .24), transparent 64%),
+    radial-gradient(620px 420px at 12% 78%, rgba(85, 198, 163, .14), transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .28));
+}
+
+body.theme-green {
+  --site-bg: #062119;
+  --theme-control-bg: #0b5f43;
+  --theme-control-fg: #ffffff;
+  --theme-control-border: rgba(85, 198, 163, .62);
+  --site-overlay:
+    radial-gradient(760px 520px at 64% 20%, rgba(85, 198, 163, .34), transparent 64%),
+    radial-gradient(620px 420px at 12% 78%, rgba(233, 192, 92, .14), transparent 62%),
+    linear-gradient(180deg, #03130f 0%, #062119 52%, #091711 100%);
+}
+
+body.theme-white {
+  --paper: #172033;
+  --muted: #58677d;
+  --line: rgba(23, 32, 51, .13);
+  --card: rgba(255, 255, 255, .75);
+  --site-bg: #f7f4ec;
+  --theme-control-bg: #ffffff;
+  --theme-control-fg: #172033;
+  --theme-control-border: rgba(23, 32, 51, .22);
+  --shadow: 0 24px 70px rgba(37, 45, 65, .16);
+  --site-overlay:
+    radial-gradient(760px 520px at 64% 20%, rgba(233, 192, 92, .22), transparent 64%),
+    radial-gradient(620px 420px at 12% 78%, rgba(85, 198, 163, .12), transparent 62%),
+    linear-gradient(180deg, #ffffff 0%, #f7f4ec 58%, #edf4f0 100%);
+}
+
+body.theme-gold {
+  --site-bg: #1f1707;
+  --theme-control-bg: #e9c05c;
+  --theme-control-fg: #1b1203;
+  --theme-control-border: rgba(248, 228, 167, .64);
+  --site-overlay:
+    radial-gradient(760px 520px at 64% 20%, rgba(233, 192, 92, .38), transparent 64%),
+    radial-gradient(620px 420px at 12% 78%, rgba(49, 93, 255, .14), transparent 62%),
+    linear-gradient(180deg, #120d04 0%, #1f1707 54%, #15120d 100%);
 }
 
 .brand-mark::before {
@@ -172,6 +225,45 @@ button {
 .nav-action:hover {
   background: rgba(255, 255, 255, .08);
   color: #fff;
+}
+
+.theme-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 40px;
+  padding: 5px 6px 5px 14px;
+  border: 1px solid var(--theme-control-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .06);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .18);
+  transition: border-color .25s ease, background .25s ease, box-shadow .25s ease;
+}
+
+.theme-select span {
+  white-space: nowrap;
+}
+
+.theme-select select {
+  width: auto;
+  min-height: 32px;
+  padding: 4px 13px 4px 32px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--theme-control-bg);
+  color: var(--theme-control-fg);
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16);
+  outline: none;
+  transition: background .25s ease, color .25s ease, box-shadow .25s ease;
+}
+
+.theme-select select:focus-visible {
+  box-shadow: 0 0 0 3px rgba(233, 192, 92, .32);
 }
 
 .site-view {

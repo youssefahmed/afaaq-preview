@@ -14,6 +14,31 @@
   const catalogModalTitle = document.querySelector("#catalogModalTitle");
   const catalogModalCategory = document.querySelector("#catalogModalCategory");
   const catalogCloseButtons = document.querySelectorAll("[data-catalog-close]");
+  const themePickers = document.querySelectorAll("[data-theme-picker]");
+  const themeNames = ["dark", "green", "white", "gold"];
+
+  function applyTheme(theme) {
+    const selectedTheme = themeNames.includes(theme) ? theme : "dark";
+
+    themeNames.forEach((themeName) => {
+      document.body.classList.toggle(`theme-${themeName}`, themeName === selectedTheme);
+    });
+
+    themePickers.forEach((picker) => {
+      picker.value = selectedTheme;
+      picker.closest(".theme-select")?.setAttribute("data-theme-value", selectedTheme);
+    });
+
+    window.localStorage.setItem("afaaqTheme", selectedTheme);
+  }
+
+  if (themePickers.length) {
+    applyTheme(window.localStorage.getItem("afaaqTheme") || "dark");
+
+    themePickers.forEach((picker) => {
+      picker.addEventListener("change", () => applyTheme(picker.value));
+    });
+  }
 
   if (services.length && heroImage && cards.length) {
     let activeIndex = 0;

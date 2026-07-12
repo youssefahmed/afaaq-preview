@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://youssefahmed.github.io/afaaq-preview/css/site.css">
 </head>
-<body>
+<body class="theme-dark">
   <div class="app-shell" data-view="site">
     <header class="topbar">
       <a class="brand" href="https://youssefahmed.github.io/afaaq-preview" aria-label="الرئيسية">
@@ -25,6 +25,15 @@
         <a href="https://youssefahmed.github.io/afaaq-preview">الرئيسية</a>
         <a href="#projects">أعمال القسم</a>
         <a href="#booking">طلب خدمة</a>
+        <label class="theme-select">
+          <span>الخلفية</span>
+          <select data-theme-picker aria-label="اختيار لون الخلفية">
+            <option value="dark">داكن</option>
+            <option value="green">أخضر</option>
+            <option value="white">أبيض</option>
+            <option value="gold">ذهبي</option>
+          </select>
+        </label>
       </nav>
     </header>
 
@@ -71,7 +80,7 @@
           <p>سيصل الطلب إلى قاعدة البيانات مع ربطه بهذا القسم مباشرة.</p>
         </div>
         <form class="booking-form" onsubmit="event.preventDefault();">
-          <input type="hidden" name="_token" value="Fwm5ZBGFqdxYO0wsa2yFo5AZCNtlYfpdd1lt25Jw" autocomplete="off">          <label>
+          <input type="hidden" name="_token" value="ItR82dYuxhchY9vvKDNnUtGxclJmifFMdKK7jNbz" autocomplete="off">          <label>
             الاسم
             <input name="name" type="text" placeholder="مثال: محمد العتيبي" value="" required>
           </label>
