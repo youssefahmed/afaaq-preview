@@ -1,0 +1,306 @@
+body.afaaq-admin {
+  direction: rtl;
+  text-align: right;
+  font-family: "Tajawal", "Segoe UI", Arial, sans-serif;
+}
+
+body.afaaq-admin .admin-sidebar {
+  right: 0;
+  left: auto;
+}
+
+body.afaaq-admin .admin-main {
+  margin-right: var(--sidebar-width);
+  margin-left: 0;
+}
+
+body.afaaq-admin .brand-mark,
+body.afaaq-admin .sidebar-nav .nav-link,
+body.afaaq-admin .page-heading-copy,
+body.afaaq-admin .section-title,
+body.afaaq-admin .metric-top,
+body.afaaq-admin .table-media,
+body.afaaq-admin .navbar-actions,
+body.afaaq-admin .admin-form label {
+  flex-direction: row-reverse;
+}
+
+body.afaaq-admin .sidebar-nav .nav-link:hover,
+body.afaaq-admin .sidebar-nav .nav-link:focus {
+  transform: translateX(-2px);
+}
+
+body.afaaq-admin .sidebar-menu-title {
+  display: block;
+  margin: .75rem .85rem .2rem;
+  color: #9ca3af;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+body.afaaq-admin .sidebar-nav .nav-link-child {
+  min-height: 40px;
+  margin-inline-start: .55rem;
+  padding-block: .55rem;
+  color: #e5e7eb;
+}
+
+body.afaaq-admin .sidebar-nav .nav-link-child .nav-icon {
+  width: 25px;
+  height: 25px;
+  font-size: .68rem;
+}
+
+body.afaaq-admin .admin-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+body.afaaq-admin .admin-form label {
+  display: grid;
+  gap: .45rem;
+  color: #1f2937;
+  font-weight: 800;
+}
+
+body.afaaq-admin .admin-form input,
+body.afaaq-admin .admin-form select,
+body.afaaq-admin .admin-form textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: .55rem .75rem;
+  border: 1px solid var(--admin-border);
+  border-radius: .55rem;
+  background: #fff;
+  color: var(--admin-text);
+  font: inherit;
+}
+
+body.afaaq-admin .admin-form textarea {
+  min-height: 110px;
+}
+
+body.afaaq-admin .admin-form .span-2,
+body.afaaq-admin .admin-form .save-btn,
+body.afaaq-admin .admin-form .danger-btn {
+  grid-column: 1 / -1;
+}
+
+body.afaaq-admin .upload-field {
+  position: relative;
+}
+
+body.afaaq-admin .upload-field input[type="file"] {
+  position: absolute;
+  inset: 1.8rem 0 auto auto;
+  width: 100%;
+  height: 46px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+body.afaaq-admin .upload-field span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  border: 1px dashed #9ca3af;
+  border-radius: .55rem;
+  background: #f8fafc;
+  color: #374151;
+}
+
+body.afaaq-admin .image-preview img,
+body.afaaq-admin .admin-thumb {
+  width: 74px;
+  height: 56px;
+  border-radius: .6rem;
+  object-fit: cover;
+  border: 1px solid var(--admin-border);
+}
+
+body.afaaq-admin .save-btn,
+body.afaaq-admin .danger-btn,
+body.afaaq-admin .status-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  width: fit-content;
+  border: 0;
+  border-radius: .55rem;
+  padding: .45rem .85rem;
+  font-weight: 800;
+}
+
+body.afaaq-admin .save-btn {
+  background: var(--admin-primary);
+  color: #fff;
+}
+
+body.afaaq-admin .danger-btn {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+body.afaaq-admin .status-chip {
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+body.afaaq-admin .status-chip.done {
+  background: #dcfce7;
+  color: #166534;
+}
+
+body.afaaq-admin .afaaq-section {
+  scroll-margin-top: 94px;
+}
+
+body.afaaq-admin .admin-screen {
+  display: none;
+}
+
+body.afaaq-admin .admin-screen.is-active {
+  display: block;
+}
+
+body.afaaq-admin .panel {
+  overflow: hidden;
+}
+
+body.afaaq-admin .service-pages-panel {
+  scroll-margin-top: 94px;
+}
+
+body.afaaq-admin .panel-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+body.afaaq-admin .panel-summary::-webkit-details-marker {
+  display: none;
+}
+
+body.afaaq-admin .panel-summary .section-title {
+  margin-bottom: .25rem;
+}
+
+body.afaaq-admin .collapse-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 54px;
+  min-height: 32px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: var(--admin-primary);
+  font-size: .82rem;
+  font-weight: 900;
+}
+
+body.afaaq-admin details[open] > .panel-summary .collapse-indicator {
+  background: #dcfce7;
+  color: #166534;
+}
+
+body.afaaq-admin details[open] > .panel-summary .collapse-indicator::before {
+  content: "إغلاق";
+}
+
+body.afaaq-admin details:not([open]) > .panel-summary .collapse-indicator::before {
+  content: "فتح";
+}
+
+body.afaaq-admin .panel-summary .collapse-indicator {
+  font-size: 0;
+}
+
+body.afaaq-admin .panel-summary .collapse-indicator::before {
+  font-size: .82rem;
+}
+
+body.afaaq-admin .panel-body + .table-responsive {
+  border-top: 1px solid var(--admin-border);
+}
+
+body.afaaq-admin details.clean-details {
+  border: 1px solid var(--admin-border);
+  border-radius: .8rem;
+  background: #fff;
+}
+
+body.afaaq-admin details.clean-details + details.clean-details {
+  margin-top: .75rem;
+}
+
+body.afaaq-admin .section-editor-group {
+  background: #f8fafc;
+}
+
+body.afaaq-admin .section-editor-group > summary {
+  font-size: 1.03rem;
+}
+
+body.afaaq-admin .section-editor-group > .details-body {
+  background: #fff;
+}
+
+body.afaaq-admin details.clean-details > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1rem;
+  color: var(--admin-text);
+  font-weight: 900;
+}
+
+body.afaaq-admin details.clean-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+body.afaaq-admin details.clean-details[open] > summary {
+  border-bottom: 1px solid var(--admin-border);
+}
+
+body.afaaq-admin .details-body {
+  padding: 1rem;
+}
+
+body.afaaq-admin .admin-help {
+  color: var(--admin-muted);
+  line-height: 1.8;
+}
+
+body.afaaq-admin .admin-flash,
+body.afaaq-admin .admin-error {
+  border-radius: .8rem;
+  padding: .85rem 1rem;
+  font-weight: 800;
+}
+
+body.afaaq-admin .admin-flash {
+  background: #dcfce7;
+  color: #166534;
+}
+
+body.afaaq-admin .admin-error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+@media (max-width: 991.98px) {
+  body.afaaq-admin .admin-main {
+    margin-right: 0;
+  }
+
+  body.afaaq-admin .admin-form {
+    grid-template-columns: 1fr;
+  }
+}

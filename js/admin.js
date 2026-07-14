@@ -2,7 +2,7 @@
   const groups = document.querySelectorAll("[data-accordion]");
 
   groups.forEach((group) => {
-    const panels = group.querySelectorAll("details");
+    const panels = group.querySelectorAll(":scope > details");
 
     function openPanel(panel) {
       panels.forEach((otherPanel) => {
