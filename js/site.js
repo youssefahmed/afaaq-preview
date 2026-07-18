@@ -21,6 +21,7 @@
   const projectMediaModal = document.querySelector("[data-project-media-modal]");
   const projectMediaItemsScript = document.querySelector("[data-project-media-items]");
   const uploadPreviewInputs = document.querySelectorAll("[data-upload-preview-input]");
+  const scrollTopButtons = document.querySelectorAll("[data-scroll-top]");
   const themeNames = ["dark", "green", "white", "gold"];
 
   function applyTheme(theme) {
@@ -329,6 +330,12 @@
       }
     });
   }
+
+  scrollTopButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
 
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver((entries) => {

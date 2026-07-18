@@ -88,6 +88,24 @@ body.afaaq-admin .admin-form .danger-btn {
   grid-column: 1 / -1;
 }
 
+body.afaaq-admin .admin-form .toggle-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--admin-border);
+  border-radius: .75rem;
+  background: #f8fafc;
+}
+
+body.afaaq-admin .admin-form .toggle-row input {
+  width: auto;
+  min-height: auto;
+  accent-color: var(--admin-primary);
+}
+
 body.afaaq-admin .admin-form-divider {
   display: grid;
   gap: .25rem;

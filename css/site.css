@@ -2514,6 +2514,34 @@ body.theme-white .decor-cta h2 {
   font-weight: 800;
 }
 
+.decor-detail-price {
+  display: inline-grid;
+  align-self: flex-start;
+  gap: 5px;
+  min-width: 210px;
+  margin-top: 18px;
+  padding: 16px 18px;
+  border: 1px solid rgba(233, 192, 92, .58);
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, rgba(233, 192, 92, .24), rgba(85, 198, 163, .1)),
+    rgba(4, 12, 10, .72);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, .22);
+}
+
+.decor-detail-price span {
+  color: var(--gold-2);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.decor-detail-price strong {
+  color: var(--text);
+  font-family: "Changa", sans-serif;
+  font-size: 22px;
+  line-height: 1.35;
+}
+
 .decor-thumb-slider {
   position: relative;
   margin: 30px 0 22px;
@@ -2614,6 +2642,68 @@ body.theme-white .decor-cta h2 {
 
 .decor-detail-projects figure:hover img {
   transform: scale(1.04);
+}
+
+.decor-floating-actions {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 50;
+  display: grid;
+  gap: 10px;
+}
+
+.decor-floating-btn {
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  min-width: 128px;
+  min-height: 48px;
+  padding: 9px 14px;
+  border: 1px solid rgba(233, 192, 92, .38);
+  border-radius: 999px;
+  background: rgba(4, 16, 12, .88);
+  color: var(--text);
+  font-family: "Changa", sans-serif;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, .28);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.decor-floating-btn:hover {
+  transform: translateY(-3px);
+  border-color: rgba(233, 192, 92, .72);
+}
+
+.decor-floating-btn span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(233, 192, 92, .16);
+  color: var(--gold-2);
+  font-size: 14px;
+}
+
+.decor-floating-btn.whatsapp {
+  border-color: rgba(55, 220, 130, .42);
+}
+
+.decor-floating-btn.whatsapp span {
+  width: auto;
+  padding: 0 9px;
+  background: #1c9d5a;
+  color: #fff;
+  font-size: 11px;
+}
+
+.decor-floating-btn.top {
+  border-color: rgba(127, 208, 174, .34);
 }
 
 .footer-column {
@@ -3546,6 +3636,21 @@ th {
   .project-media-nav {
     width: 38px;
     height: 54px;
+  }
+
+  .decor-floating-actions {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .decor-floating-btn {
+    grid-template-columns: 1fr;
+    min-width: 48px;
+    padding: 8px;
+  }
+
+  .decor-floating-btn strong {
+    display: none;
   }
 
   .decor-gallery-grid figure.featured,
