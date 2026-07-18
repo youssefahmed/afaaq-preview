@@ -88,6 +88,40 @@ body.afaaq-admin .admin-form .danger-btn {
   grid-column: 1 / -1;
 }
 
+body.afaaq-admin .admin-form-divider {
+  display: grid;
+  gap: .25rem;
+  padding: .85rem 1rem;
+  border: 1px solid rgba(34, 197, 94, .18);
+  border-radius: .75rem;
+  background: #f0fdf4;
+  color: #14532d;
+}
+
+body.afaaq-admin .admin-form-divider strong {
+  font-size: 1rem;
+}
+
+body.afaaq-admin .admin-form-divider span {
+  color: #4b5563;
+  font-size: .88rem;
+  font-weight: 700;
+}
+
+body.afaaq-admin .section-identity-card {
+  padding: 1rem;
+  border: 1px solid rgba(59, 130, 246, .18);
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #f8fafc, #eef6ff);
+}
+
+body.afaaq-admin .identity-logo-preview img {
+  width: 96px;
+  height: 72px;
+  background: #fff;
+  object-fit: contain;
+}
+
 body.afaaq-admin .upload-field {
   position: relative;
 }
@@ -119,6 +153,83 @@ body.afaaq-admin .admin-thumb {
   border-radius: .6rem;
   object-fit: cover;
   border: 1px solid var(--admin-border);
+}
+
+body.afaaq-admin .upload-preview {
+  display: grid;
+  gap: .75rem;
+  padding: .75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: .75rem;
+  background: #f8fafc;
+}
+
+body.afaaq-admin .upload-preview small {
+  color: #64748b;
+  font-weight: 800;
+}
+
+body.afaaq-admin .upload-preview-count {
+  display: inline-flex;
+  width: fit-content;
+  padding: .3rem .65rem;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #075985;
+  font-size: .82rem;
+  font-weight: 900;
+}
+
+body.afaaq-admin .upload-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: .65rem;
+}
+
+body.afaaq-admin .upload-preview-item {
+  position: relative;
+  overflow: hidden;
+  min-height: 126px;
+  border: 1px solid #dbe3ef;
+  border-radius: .75rem;
+  background: #fff;
+}
+
+body.afaaq-admin .upload-preview-item img,
+body.afaaq-admin .upload-preview-item video {
+  display: block;
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  object-position: center;
+  background: #0f172a;
+}
+
+body.afaaq-admin .upload-preview-item span {
+  display: block;
+  overflow: hidden;
+  padding: .42rem .5rem;
+  color: #334155;
+  font-size: .76rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.afaaq-admin .upload-preview-item button {
+  position: absolute;
+  top: .35rem;
+  left: .35rem;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, .82);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
 }
 
 body.afaaq-admin .save-btn,

@@ -15,6 +15,12 @@
   const catalogModalCategory = document.querySelector("#catalogModalCategory");
   const catalogCloseButtons = document.querySelectorAll("[data-catalog-close]");
   const themePickers = document.querySelectorAll("[data-theme-picker]");
+  const decorHeader = document.querySelector("[data-decor-header]");
+  const decorDepthItems = document.querySelectorAll("[data-decor-depth]");
+  const projectsToggle = document.querySelector("[data-projects-toggle]");
+  const projectMediaModal = document.querySelector("[data-project-media-modal]");
+  const projectMediaItemsScript = document.querySelector("[data-project-media-items]");
+  const uploadPreviewInputs = document.querySelectorAll("[data-upload-preview-input]");
   const themeNames = ["dark", "green", "white", "gold"];
 
   function applyTheme(theme) {
@@ -39,6 +45,215 @@
       picker.addEventListener("change", () => applyTheme(picker.value));
     });
   }
+
+  if (decorHeader) {
+    const setDecorHeaderState = () => {
+      decorHeader.classList.toggle("is-scrolled", window.scrollY > 24);
+    };
+
+    setDecorHeaderState();
+    window.addEventListener("scroll", setDecorHeaderState, { passive: true });
+  }
+
+  if (
+    decorDepthItems.length
+    && window.matchMedia("(pointer: fine)").matches
+    && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    window.addEventListener("mousemove", (event) => {
+      const x = (event.clientX / window.innerWidth) - 0.5;
+      const y = (event.clientY / window.innerHeight) - 0.5;
+
+      decorDepthItems.forEach((item) => {
+        const depth = Number(item.dataset.decorDepth || 0);
+        item.style.setProperty("--decor-parallax-x", `${x * depth}px`);
+        item.style.setProperty("--decor-parallax-y", `${y * depth}px`);
+        item.style.transform = `translate3d(var(--decor-parallax-x), var(--decor-parallax-y), 0)`;
+      });
+    }, { passive: true });
+  }
+
+  if (projectsToggle) {
+    projectsToggle.addEventListener("click", () => {
+      document.querySelectorAll(".decor-project-showcase-card.is-hidden").forEach((card) => {
+        card.classList.remove("is-hidden");
+      });
+      projectsToggle.remove();
+    });
+  }
+
+  if (projectMediaModal && projectMediaItemsScript) {
+    const mediaItems = JSON.parse(projectMediaItemsScript.textContent || "[]");
+    const stage = projectMediaModal.querySelector("[data-project-media-stage]");
+    const title = projectMediaModal.querySelector("[data-project-media-title]");
+    const counter = projectMediaModal.querySelector("[data-project-media-counter]");
+    const closeButtons = projectMediaModal.querySelectorAll("[data-project-media-close]");
+    const navButtons = projectMediaModal.querySelectorAll("[data-project-media-direction]");
+    const triggers = document.querySelectorAll("[data-project-media-index]");
+    let activeMediaIndex = 0;
+
+    function renderProjectMedia(index) {
+      if (!mediaItems.length) {
+        return;
+      }
+
+      activeMediaIndex = (index + mediaItems.length) % mediaItems.length;
+      const item = mediaItems[activeMediaIndex];
+      title.textContent = item.title || "";
+      counter.textContent = `${activeMediaIndex + 1} / ${mediaItems.length}`;
+      stage.innerHTML = "";
+
+      if (item.type === "video") {
+        const iframe = document.createElement("iframe");
+        iframe.src = item.src;
+        iframe.title = item.title || "Project video";
+        iframe.allowFullscreen = true;
+        iframe.loading = "lazy";
+        stage.appendChild(iframe);
+        return;
+      }
+
+      if (item.type === "uploaded-video") {
+        const video = document.createElement("video");
+        video.src = item.src;
+        video.controls = true;
+        video.preload = "metadata";
+        stage.appendChild(video);
+        return;
+      }
+
+      if (item.type === "video-placeholder") {
+        const placeholder = document.createElement("div");
+        placeholder.className = "project-media-video-placeholder";
+        placeholder.innerHTML = "<span>Video</span><strong>سيتم إضافة فيديو المشروع من لوحة الإدارة</strong>";
+        stage.appendChild(placeholder);
+        return;
+      }
+
+      const image = document.createElement("img");
+      image.src = item.src;
+      image.alt = item.title || "";
+      stage.appendChild(image);
+    }
+
+    function openProjectMedia(index) {
+      renderProjectMedia(index);
+      projectMediaModal.classList.add("is-open");
+      projectMediaModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeProjectMedia() {
+      projectMediaModal.classList.remove("is-open");
+      projectMediaModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      stage.innerHTML = "";
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        openProjectMedia(Number(trigger.dataset.projectMediaIndex || 0));
+      });
+    });
+
+    closeButtons.forEach((button) => button.addEventListener("click", closeProjectMedia));
+    navButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        renderProjectMedia(activeMediaIndex + Number(button.dataset.projectMediaDirection));
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!projectMediaModal.classList.contains("is-open")) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        closeProjectMedia();
+      }
+
+      if (event.key === "ArrowRight") {
+        renderProjectMedia(activeMediaIndex - 1);
+      }
+
+      if (event.key === "ArrowLeft") {
+        renderProjectMedia(activeMediaIndex + 1);
+      }
+    });
+  }
+
+  uploadPreviewInputs.forEach((input) => {
+    const preview = input.closest("label")?.nextElementSibling?.matches("[data-upload-preview]")
+      ? input.closest("label").nextElementSibling
+      : null;
+
+    if (!preview) {
+      return;
+    }
+
+    let selectedFiles = [];
+
+    function syncInputFiles() {
+      if (typeof DataTransfer === "undefined") {
+        return;
+      }
+
+      const transfer = new DataTransfer();
+      selectedFiles.forEach((file) => transfer.items.add(file));
+      input.files = transfer.files;
+    }
+
+    function renderUploadPreview() {
+      preview.innerHTML = "";
+
+      if (!selectedFiles.length) {
+        const empty = document.createElement("small");
+        empty.textContent = preview.dataset.emptyText || "لم يتم اختيار ملفات";
+        preview.appendChild(empty);
+        return;
+      }
+
+      const count = document.createElement("strong");
+      count.className = "upload-preview-count";
+      count.textContent = `${selectedFiles.length} ملف محدد`;
+      preview.appendChild(count);
+
+      const grid = document.createElement("div");
+      grid.className = "upload-preview-grid";
+      preview.appendChild(grid);
+
+      selectedFiles.forEach((file, index) => {
+        const item = document.createElement("div");
+        item.className = "upload-preview-item";
+
+        const image = document.createElement("img");
+        image.src = URL.createObjectURL(file);
+        image.alt = file.name;
+        image.onload = () => URL.revokeObjectURL(image.src);
+
+        const name = document.createElement("span");
+        name.textContent = file.name;
+
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.textContent = "×";
+        remove.setAttribute("aria-label", `حذف ${file.name}`);
+        remove.addEventListener("click", () => {
+          selectedFiles.splice(index, 1);
+          syncInputFiles();
+          renderUploadPreview();
+        });
+
+        item.append(image, name, remove);
+        grid.appendChild(item);
+      });
+    }
+
+    input.addEventListener("change", () => {
+      selectedFiles = [...input.files];
+      renderUploadPreview();
+    });
+  });
 
   if (services.length && heroImage && cards.length) {
     let activeIndex = 0;
