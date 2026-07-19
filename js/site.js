@@ -22,6 +22,7 @@
   const projectMediaItemsScript = document.querySelector("[data-project-media-items]");
   const uploadPreviewInputs = document.querySelectorAll("[data-upload-preview-input]");
   const scrollTopButtons = document.querySelectorAll("[data-scroll-top]");
+  const decorAnchorLinks = document.querySelectorAll(".decor-shell a[href*='#']");
   const themeNames = ["dark", "green", "white", "gold"];
 
   function applyTheme(theme) {
@@ -81,6 +82,35 @@
       });
       projectsToggle.remove();
     });
+  }
+
+  decorAnchorLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const url = new URL(link.href, window.location.href);
+      const currentPath = window.location.pathname.replace(/\/$/, "");
+      const targetPath = url.pathname.replace(/\/$/, "");
+
+      if (targetPath !== currentPath || !url.hash) {
+        return;
+      }
+
+      const target = document.querySelector(url.hash);
+
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+      window.history.pushState(null, "", url.hash);
+    });
+  });
+
+  if (window.location.hash && document.body.classList.contains("decor-identity-page")) {
+    window.setTimeout(() => {
+      const target = document.querySelector(window.location.hash);
+      target?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 120);
   }
 
   if (projectMediaModal && projectMediaItemsScript) {

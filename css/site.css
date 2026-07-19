@@ -1410,6 +1410,7 @@ textarea:focus {
   display: grid;
   align-items: end;
   isolation: isolate;
+  overflow: hidden;
   margin-top: -94px;
   border-bottom: 1px solid rgba(127, 208, 174, .18);
 }
@@ -1432,7 +1433,6 @@ textarea:focus {
   height: 100%;
   object-fit: cover;
   filter: saturate(.9) contrast(1.08);
-  animation: decorHeroImage 16s ease-in-out infinite alternate;
 }
 
 .decor-hero-grid {
@@ -1448,6 +1448,7 @@ textarea:focus {
 }
 
 .decor-hero-line {
+  display: none;
   position: absolute;
   z-index: 1;
   height: 2px;
@@ -2382,6 +2383,12 @@ body.theme-white .decor-cta h2 {
 
 .decor-detail-site {
   padding-top: 38px;
+}
+
+.decor-product-section,
+.decor-project-showcase,
+.decor-overview {
+  scroll-margin-top: calc(50vh - 110px);
 }
 
 .decor-detail-hero {
