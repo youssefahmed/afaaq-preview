@@ -84,6 +84,16 @@
     });
   }
 
+  function scrollDecorTargetToComfortPosition(target, behavior = "smooth") {
+    const header = document.querySelector("[data-decor-header]");
+    const headerHeight = header?.getBoundingClientRect().height || 0;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY;
+    const targetOffset = window.innerHeight <= 700 ? 96 : Math.round(window.innerHeight * 0.24);
+    const targetPosition = Math.max(0, targetTop - targetOffset - Math.min(headerHeight, 92));
+
+    window.scrollTo({ top: targetPosition, behavior });
+  }
+
   decorAnchorLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       const url = new URL(link.href, window.location.href);
@@ -101,7 +111,7 @@
       }
 
       event.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "center" });
+      scrollDecorTargetToComfortPosition(target);
       window.history.pushState(null, "", url.hash);
     });
   });
@@ -109,7 +119,9 @@
   if (window.location.hash && document.body.classList.contains("decor-identity-page")) {
     window.setTimeout(() => {
       const target = document.querySelector(window.location.hash);
-      target?.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (target) {
+        scrollDecorTargetToComfortPosition(target);
+      }
     }, 120);
   }
 
