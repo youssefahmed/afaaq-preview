@@ -23,6 +23,9 @@
   const uploadPreviewInputs = document.querySelectorAll("[data-upload-preview-input]");
   const scrollTopButtons = document.querySelectorAll("[data-scroll-top]");
   const decorAnchorLinks = document.querySelectorAll(".decor-shell a[href*='#']");
+  const visionImage = document.querySelector("#visionImage");
+  const visionImagesScript = document.querySelector("#visionImages");
+  const visionButtons = document.querySelectorAll("[data-vision-direction]");
   const themeNames = ["dark", "green", "white", "gold"];
   const isArabic = document.documentElement.lang !== "en";
   const i18n = {
@@ -89,6 +92,44 @@
       });
       projectsToggle.remove();
     });
+  }
+
+  if (visionImage && visionImagesScript) {
+    const images = JSON.parse(visionImagesScript.textContent || "[]").filter(Boolean);
+    let activeVisionImage = Math.max(0, images.indexOf(visionImage.getAttribute("src")));
+    let visionTimer;
+
+    function setVisionImage(index) {
+      if (!images.length) {
+        return;
+      }
+
+      activeVisionImage = (index + images.length) % images.length;
+      visionImage.style.opacity = "0";
+
+      window.setTimeout(() => {
+        visionImage.src = images[activeVisionImage];
+        visionImage.style.opacity = "1";
+      }, 180);
+    }
+
+    function startVisionTimer() {
+      if (images.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+
+      window.clearInterval(visionTimer);
+      visionTimer = window.setInterval(() => setVisionImage(activeVisionImage + 1), 4200);
+    }
+
+    visionButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setVisionImage(activeVisionImage + Number(button.dataset.visionDirection || 1));
+        startVisionTimer();
+      });
+    });
+
+    startVisionTimer();
   }
 
   function scrollDecorTargetToComfortPosition(target, behavior = "smooth") {
