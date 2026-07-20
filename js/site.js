@@ -26,6 +26,7 @@
   const visionImage = document.querySelector("#visionImage");
   const visionImagesScript = document.querySelector("#visionImages");
   const visionButtons = document.querySelectorAll("[data-vision-direction]");
+  const projectCategoryLinks = document.querySelectorAll(".projects-category-bar a[href^='#']");
   const themeNames = ["dark", "green", "white", "gold"];
   const isArabic = document.documentElement.lang !== "en";
   const i18n = {
@@ -161,6 +162,20 @@
       event.preventDefault();
       scrollDecorTargetToComfortPosition(target);
       window.history.pushState(null, "", url.hash);
+    });
+  });
+
+  projectCategoryLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = document.querySelector(link.getAttribute("href"));
+
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.pushState(null, "", link.getAttribute("href"));
     });
   });
 
