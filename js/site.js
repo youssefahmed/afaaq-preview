@@ -24,6 +24,13 @@
   const scrollTopButtons = document.querySelectorAll("[data-scroll-top]");
   const decorAnchorLinks = document.querySelectorAll(".decor-shell a[href*='#']");
   const themeNames = ["dark", "green", "white", "gold"];
+  const isArabic = document.documentElement.lang !== "en";
+  const i18n = {
+    videoSoon: isArabic ? "سيتم إضافة فيديو المشروع من لوحة الإدارة" : "The project video will be added from the dashboard",
+    noFiles: isArabic ? "لم يتم اختيار ملفات" : "No files selected",
+    selectedCount: (count) => isArabic ? `${count} ملف محدد` : `${count} files selected`,
+    removeFile: (name) => isArabic ? `حذف ${name}` : `Remove ${name}`,
+  };
 
   function applyTheme(theme) {
     const selectedTheme = themeNames.includes(theme) ? theme : "dark";
@@ -168,7 +175,7 @@
       if (item.type === "video-placeholder") {
         const placeholder = document.createElement("div");
         placeholder.className = "project-media-video-placeholder";
-        placeholder.innerHTML = "<span>Video</span><strong>سيتم إضافة فيديو المشروع من لوحة الإدارة</strong>";
+        placeholder.innerHTML = `<span>Video</span><strong>${i18n.videoSoon}</strong>`;
         stage.appendChild(placeholder);
         return;
       }
@@ -251,14 +258,14 @@
 
       if (!selectedFiles.length) {
         const empty = document.createElement("small");
-        empty.textContent = preview.dataset.emptyText || "لم يتم اختيار ملفات";
+        empty.textContent = preview.dataset.emptyText || i18n.noFiles;
         preview.appendChild(empty);
         return;
       }
 
       const count = document.createElement("strong");
       count.className = "upload-preview-count";
-      count.textContent = `${selectedFiles.length} ملف محدد`;
+      count.textContent = i18n.selectedCount(selectedFiles.length);
       preview.appendChild(count);
 
       const grid = document.createElement("div");
@@ -280,7 +287,7 @@
         const remove = document.createElement("button");
         remove.type = "button";
         remove.textContent = "×";
-        remove.setAttribute("aria-label", `حذف ${file.name}`);
+        remove.setAttribute("aria-label", i18n.removeFile(file.name));
         remove.addEventListener("click", () => {
           selectedFiles.splice(index, 1);
           syncInputFiles();

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PU Foam Decor | Afaq Al-Tamayoz Industry</title>
+  <meta name="description" content="Planning and producing conference, exhibition, and private event environments from concept to execution.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/afaaq-preview/css/site.css">
+</head>
+<body class="theme-dark">
+  <div class="app-shell" data-view="site">
+    <header class="topbar">
+      <a class="brand" href="/afaaq-preview/en" aria-label="Home">
+        <span class="brand-mark"><img src="/afaaq-preview/images/afaaq-logo.svg" alt="Afaq Al-Tamayoz Industry"></span>
+        <span>
+          <strong>Afaq Al-Tamayoz Industry</strong>
+          <small>Polystyrene and decor solutions</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Home">
+        <a href="/afaaq-preview/en">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#booking">Request Service</a>
+        <a class="language-link" href="/afaaq-preview/services/events">العربية</a>
+        <label class="theme-select">
+          <span>Background</span>
+          <select data-theme-picker aria-label="Background">
+            <option value="dark">Dark</option>
+            <option value="green">Green</option>
+            <option value="white">White</option>
+            <option value="gold">Gold</option>
+          </select>
+        </label>
+      </nav>
+    </header>
+
+    <main class="site-view">
+      <section class="service-hero">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" alt="PU Foam Decor">
+        <div class="service-hero-copy">
+          <span class="badge">PU Foam Decor</span>
+          <h1>Memorable event spaces</h1>
+          <p>Planning and producing conference, exhibition, and private event environments from concept to execution.</p>
+          <a class="primary-btn" href="#booking">Request Service</a>
+        </div>
+      </section>
+
+      <section class="section intro-section">
+        <div>
+          <span class="section-kicker">Section Pages</span>
+          <h2>PU Foam Decor</h2>
+        </div>
+        <p>This is an independent section page. Its content and subpages can be managed from the dashboard while using the same database content.</p>
+      </section>
+
+      <section class="section decor-related-products">
+        <div class="section-head">
+          <span class="section-kicker">Section Pages</span>
+          <h2>What we offer in PU Foam Decor?</h2>
+        </div>
+        <div class="decor-overview-grid">
+                      <a href="/afaaq-preview/en/services/events/conferences-exhibitions" class="decor-overview-card reveal-on-scroll">
+              <span>01</span>
+              <h3>المؤتمرات والمعارض</h3>
+              <p>تخطيط وتنفيذ مساحات المؤتمرات والمعارض من الفكرة حتى التشغيل.</p>
+            </a>
+                      <a href="/afaaq-preview/en/services/events/private-events" class="decor-overview-card reveal-on-scroll">
+              <span>02</span>
+              <h3>المناسبات الخاصة</h3>
+              <p>حلول تنظيم للمناسبات الخاصة والضيافة وتجربة الحضور.</p>
+            </a>
+                  </div>
+      </section>
+
+      <section class="section projects-section" id="projects">
+        <div class="section-head">
+          <span class="section-kicker">Projects</span>
+          <h2>Projects for PU Foam Decor</h2>
+        </div>
+        <div class="project-grid">
+                      <article class="project-card">
+              <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="معرض إطلاق منتج" loading="lazy">
+              <div>
+                <span>إدارة الفعاليات</span>
+                <h3>معرض إطلاق منتج</h3>
+                <p>تجهيز مساحة عرض متكاملة وتجربة استقبال للزوار.</p>
+              </div>
+            </article>
+                  </div>
+      </section>
+
+      <section class="section booking-section" id="booking">
+        <div class="booking-copy">
+          <span class="section-kicker">Service Request</span>
+          <h2>Request PU Foam Decor</h2>
+          <p>Your request is saved to the database so the sales team can follow up quickly.</p>
+        </div>
+        <form class="booking-form" method="POST" action="/afaaq-preview/en/inquiries">
+          <input type="hidden" name="_token" value="Pi11BLPHOSZbTZpf9PTNOSYvXfeFAMSfHnLIGb7s" autocomplete="off">          <label>
+            Name
+            <input name="name" type="text" placeholder="Example: Mohammed Alotaibi" value="" required>
+          </label>
+          <label>
+            Mobile Number
+            <input name="phone" type="tel" placeholder="+966 5x xxx xxxx" value="" required>
+          </label>
+          <label>
+            Service
+            <select name="service_id" required>
+                              <option value="1" >EPS Foam Decor</option>
+                              <option value="2" selected>PU Foam Decor</option>
+                              <option value="3" >Event Manufacturing</option>
+                              <option value="4" >Other Products</option>
+                          </select>
+          </label>
+          <label>
+            Project Details
+            <textarea name="message" rows="4" placeholder="Write a short description of the site, event, or required product" required></textarea>
+          </label>
+          <button class="primary-btn form-btn" type="submit">Send Request</button>
+                  </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
