@@ -360,6 +360,163 @@ body.afaaq-admin .panel-body + .table-responsive {
   border-top: 1px solid var(--admin-border);
 }
 
+body.afaaq-admin .admin-project-groups {
+  display: grid;
+  gap: 1rem;
+  padding: 0 1.25rem 1.25rem;
+}
+
+body.afaaq-admin .admin-project-group {
+  border: 1px solid var(--admin-border);
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 16px 34px rgba(15, 23, 42, .06);
+}
+
+body.afaaq-admin .admin-project-group > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+body.afaaq-admin .admin-project-group > summary::-webkit-details-marker {
+  display: none;
+}
+
+body.afaaq-admin .admin-project-group > summary span {
+  color: #111827;
+  font-size: 1.02rem;
+  font-weight: 900;
+}
+
+body.afaaq-admin .admin-project-group > summary small {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: .25rem .7rem;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #3730a3;
+  font-weight: 900;
+}
+
+body.afaaq-admin .admin-project-list {
+  display: grid;
+  gap: .85rem;
+}
+
+body.afaaq-admin .admin-project-card {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  padding: .85rem;
+  border: 1px solid #e5e7eb;
+  border-radius: .9rem;
+  background: linear-gradient(135deg, #f8fafc, #fff);
+}
+
+body.afaaq-admin .admin-project-card-media {
+  width: 116px;
+  height: 86px;
+  border: 1px solid var(--admin-border);
+  border-radius: .8rem;
+  object-fit: cover;
+  background: #e5e7eb;
+}
+
+body.afaaq-admin .admin-project-card-copy {
+  display: grid;
+  gap: .35rem;
+  min-width: 0;
+}
+
+body.afaaq-admin .admin-project-card-copy strong {
+  color: #111827;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+body.afaaq-admin .admin-project-card-copy p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: #64748b;
+  font-size: .9rem;
+  line-height: 1.6;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+body.afaaq-admin .admin-project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+body.afaaq-admin .admin-project-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  min-height: 28px;
+  padding: .2rem .55rem;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: .78rem;
+  font-weight: 900;
+}
+
+body.afaaq-admin .admin-project-edit {
+  min-width: 116px;
+}
+
+body.afaaq-admin .admin-project-edit > summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 38px;
+  padding: .45rem .75rem;
+  border-radius: .55rem;
+  background: #ecfdf5;
+  color: #047857;
+  cursor: pointer;
+  font-weight: 900;
+  list-style: none;
+}
+
+body.afaaq-admin .admin-project-edit > summary::-webkit-details-marker {
+  display: none;
+}
+
+body.afaaq-admin .admin-project-edit .details-body {
+  margin-top: .85rem;
+  padding: 1rem;
+  border: 1px solid #dbeafe;
+  border-radius: .9rem;
+  background: #f8fafc;
+}
+
+@media (max-width: 900px) {
+  body.afaaq-admin .admin-project-card {
+    grid-template-columns: 92px minmax(0, 1fr);
+  }
+
+  body.afaaq-admin .admin-project-card-media {
+    width: 92px;
+    height: 76px;
+  }
+
+  body.afaaq-admin .admin-project-edit {
+    grid-column: 1 / -1;
+  }
+}
+
 body.afaaq-admin details.clean-details {
   border: 1px solid var(--admin-border);
   border-radius: .8rem;
