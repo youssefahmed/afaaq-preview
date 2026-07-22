@@ -8,11 +8,13 @@
   const heroText = document.querySelector("#heroText");
   const cards = document.querySelectorAll("[data-hero-service-index]");
   const revealItems = document.querySelectorAll(".reveal-on-scroll");
-  const catalogButtons = document.querySelectorAll("[data-catalog-image]");
+  const catalogButtons = document.querySelectorAll("[data-catalog-pdf]");
   const catalogModal = document.querySelector("#catalogModal");
-  const catalogModalImage = document.querySelector("#catalogModalImage");
+  const catalogModalFrame = document.querySelector("#catalogModalFrame");
   const catalogModalTitle = document.querySelector("#catalogModalTitle");
   const catalogModalCategory = document.querySelector("#catalogModalCategory");
+  const catalogModalExternal = document.querySelector("#catalogModalExternal");
+  const catalogModalDownload = document.querySelector("#catalogModalDownload");
   const catalogCloseButtons = document.querySelectorAll("[data-catalog-close]");
   const themePickers = document.querySelectorAll("[data-theme-picker]");
   const decorHeader = document.querySelector("[data-decor-header]");
@@ -411,23 +413,31 @@
     restartSlider();
   }
 
-  if (catalogModal && catalogModalImage && catalogModalTitle && catalogModalCategory) {
+  if (catalogModal && catalogModalFrame && catalogModalTitle && catalogModalCategory) {
+    let lastCatalogTrigger = null;
+
     function closeCatalog() {
       catalogModal.classList.remove("is-open");
       catalogModal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("modal-open");
-      catalogModalImage.src = "";
+      catalogModalFrame.src = "about:blank";
+      lastCatalogTrigger?.focus();
     }
 
     catalogButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        catalogModalImage.src = button.dataset.catalogImage;
-        catalogModalImage.alt = button.dataset.catalogTitle || "";
+        const pdfUrl = button.dataset.catalogPdf;
+
+        lastCatalogTrigger = button;
+        catalogModalFrame.src = `${pdfUrl}#view=FitH`;
         catalogModalTitle.textContent = button.dataset.catalogTitle || "";
         catalogModalCategory.textContent = button.dataset.catalogCategory || "";
+        catalogModalExternal?.setAttribute("href", pdfUrl);
+        catalogModalDownload?.setAttribute("href", pdfUrl);
         catalogModal.classList.add("is-open");
         catalogModal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
+        window.setTimeout(() => catalogModal.querySelector("[data-catalog-close]")?.focus(), 50);
       });
     });
 

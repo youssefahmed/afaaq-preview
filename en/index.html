@@ -191,58 +191,14 @@
       
       <section class="section catalogs-section reveal-on-scroll" id="catalogs">
         <div class="section-head">
-          <span class="section-kicker">Catalogs</span>
-          <h2>Product and solution catalog visuals</h2>
+          <div><span class="section-kicker">Catalogs</span><h2>Product and solution catalogs</h2></div>
+          <a class="ghost-btn catalog-more-btn" href="/afaaq-preview/en/catalogs/">See More</a>
         </div>
         <div class="catalog-grid" aria-label="Catalogs">
-                      <button
-              class="catalog-card reveal-on-scroll"
-              type="button"
-              data-catalog-image="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
-              data-catalog-title="Polystyrene Solutions Catalog"
-              data-catalog-category="EPS"
-              aria-label="View Catalogs Polystyrene Solutions Catalog"
-            >
-              <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Polystyrene Solutions Catalog" loading="lazy">
-              <span>EPS</span>
-              <strong>Polystyrene Solutions Catalog</strong>
-            </button>
-                      <button
-              class="catalog-card reveal-on-scroll"
-              type="button"
-              data-catalog-image="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
-              data-catalog-title="Facades and Decor Catalog"
-              data-catalog-category="Decor &amp; Engineering"
-              aria-label="View Catalogs Facades and Decor Catalog"
-            >
-              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Facades and Decor Catalog" loading="lazy">
-              <span>Decor &amp; Engineering</span>
-              <strong>Facades and Decor Catalog</strong>
-            </button>
-                      <button
-              class="catalog-card reveal-on-scroll"
-              type="button"
-              data-catalog-image="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
-              data-catalog-title="Events and Exhibitions Catalog"
-              data-catalog-category="Events"
-              aria-label="View Catalogs Events and Exhibitions Catalog"
-            >
-              <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Events and Exhibitions Catalog" loading="lazy">
-              <span>Events</span>
-              <strong>Events and Exhibitions Catalog</strong>
-            </button>
-                      <button
-              class="catalog-card reveal-on-scroll"
-              type="button"
-              data-catalog-image="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&amp;fit=crop&amp;w=1400&amp;q=85"
-              data-catalog-title="Wall Solutions Catalog"
-              data-catalog-category="Walls &amp; Finishes"
-              aria-label="View Catalogs Wall Solutions Catalog"
-            >
-              <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Wall Solutions Catalog" loading="lazy">
-              <span>Walls &amp; Finishes</span>
-              <strong>Wall Solutions Catalog</strong>
-            </button>
+          <button class="catalog-card reveal-on-scroll" type="button" data-catalog-pdf="/afaaq-preview/catalog-assets/pdfs/2b-factory-products.pdf" data-catalog-title="Factory Products Catalog" data-catalog-category="Insulation &amp; Decor Products" aria-label="Open catalog: Factory Products Catalog"><img src="/afaaq-preview/catalog-assets/covers/2b-factory-products.jpg" alt="Factory Products Catalog" loading="lazy"><span>Insulation &amp; Decor Products</span><strong>Factory Products Catalog</strong><small>Open catalog <b>↗</b></small></button>
+          <button class="catalog-card reveal-on-scroll" type="button" data-catalog-pdf="/afaaq-preview/catalog-assets/pdfs/company-profile.pdf" data-catalog-title="Company Profile" data-catalog-category="About Afaq Al-Tamayoz" aria-label="Open catalog: Company Profile"><img src="/afaaq-preview/catalog-assets/covers/company-profile.jpg" alt="Company Profile" loading="lazy"><span>About Afaq Al-Tamayoz</span><strong>Company Profile</strong><small>Open catalog <b>↗</b></small></button>
+          <button class="catalog-card reveal-on-scroll" type="button" data-catalog-pdf="/afaaq-preview/catalog-assets/pdfs/eps-decoration.pdf" data-catalog-title="EPS Decoration Catalog" data-catalog-category="Decor &amp; Finishes" aria-label="Open catalog: EPS Decoration Catalog"><img src="/afaaq-preview/catalog-assets/covers/eps-decoration.jpg" alt="EPS Decoration Catalog" loading="lazy"><span>Decor &amp; Finishes</span><strong>EPS Decoration Catalog</strong><small>Open catalog <b>↗</b></small></button>
+          <button class="catalog-card reveal-on-scroll" type="button" data-catalog-pdf="/afaaq-preview/catalog-assets/pdfs/event.pdf" data-catalog-title="Events Catalog" data-catalog-category="Events &amp; Exhibitions" aria-label="Open catalog: Events Catalog"><img src="/afaaq-preview/catalog-assets/covers/event.jpg" alt="Events Catalog" loading="lazy"><span>Events &amp; Exhibitions</span><strong>Events Catalog</strong><small>Open catalog <b>↗</b></small></button>
                   </div>
       </section>
 
@@ -331,17 +287,7 @@
     </main>
   </div>
 
-  <div class="catalog-modal" id="catalogModal" aria-hidden="true">
-    <button class="catalog-modal__backdrop" type="button" data-catalog-close aria-label="Close gallery"></button>
-    <div class="catalog-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="catalogModalTitle">
-      <button class="catalog-modal__close" type="button" data-catalog-close aria-label="Close">×</button>
-      <img id="catalogModalImage" src="" alt="">
-      <div class="catalog-modal__caption">
-        <span id="catalogModalCategory"></span>
-        <h3 id="catalogModalTitle"></h3>
-      </div>
-    </div>
-  </div>
+  <div class="catalog-modal" id="catalogModal" aria-hidden="true"><button class="catalog-modal__backdrop" type="button" data-catalog-close aria-label="Close"></button><div class="catalog-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="catalogModalTitle"><div class="catalog-modal__toolbar"><div><span id="catalogModalCategory"></span><h3 id="catalogModalTitle"></h3></div><div class="catalog-modal__actions"><a id="catalogModalExternal" href="#" target="_blank" rel="noreferrer">Open in new tab</a><a id="catalogModalDownload" href="#" download>Download catalog</a><button class="catalog-modal__close" type="button" data-catalog-close aria-label="Close">×</button></div></div><iframe id="catalogModalFrame" src="about:blank" title="Catalogs"></iframe></div></div>
 
   <script>
     window.siteServices = [{"name":"EPS Foam Decor","headline":"Details that make the difference","description":"Design and execution of interior decor, facades, and engineering solutions.","image_url":"https:\/\/images.unsplash.com\/photo-1600585154340-be6161a56a0c?auto=format\u0026fit=crop\u0026w=1800\u0026q=80"},{"name":"PU Foam Decor","headline":"Memorable event spaces","description":"Planning and producing conference, exhibition, and private event environments from concept to execution.","image_url":"https:\/\/images.unsplash.com\/photo-1540575467063-178a50c2df87?auto=format\u0026fit=crop\u0026w=1800\u0026q=80"},{"name":"Event Manufacturing","headline":"Built details for event impact","description":"Manufacturing decorative event components, displays, cladding, insulation, and interior and exterior finishes.","image_url":"https:\/\/images.unsplash.com\/photo-1615873968403-89e068629265?auto=format\u0026fit=crop\u0026w=1800\u0026q=80"},{"name":"Other Products","headline":"Solutions without limits","description":"Custom manufacturing and tailored product solutions for special projects.","image_url":"https:\/\/images.unsplash.com\/photo-1581091226825-a6a2a5aee158?auto=format\u0026fit=crop\u0026w=1800\u0026q=80"}];
