@@ -971,6 +971,40 @@ h3 {
   line-height: 1.75;
 }
 
+.decor-vision-section {
+  margin-top: clamp(44px, 7vw, 86px);
+  border-color: rgba(216, 183, 102, .18);
+  background:
+    radial-gradient(circle at 82% 18%, rgba(216, 183, 102, .14), transparent 28%),
+    linear-gradient(135deg, rgba(4, 12, 18, .97), rgba(4, 32, 25, .9));
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .32);
+}
+
+.decor-vision-section .vision-media {
+  min-height: clamp(420px, 36vw, 540px);
+}
+
+.decor-vision-section .vision-copy {
+  min-height: clamp(420px, 36vw, 540px);
+  background:
+    linear-gradient(90deg, rgba(4, 12, 18, .2), rgba(4, 12, 18, .72)),
+    radial-gradient(circle at 16% 18%, rgba(127, 208, 174, .12), transparent 34%);
+}
+
+.decor-vision-section .vision-copy h2 {
+  font-size: clamp(36px, 5vw, 72px);
+}
+
+.decor-vision-section .vision-features article {
+  background: rgba(4, 13, 17, .56);
+  border-color: rgba(216, 183, 102, .16);
+}
+
+.decor-vision-section .vision-features article:hover {
+  border-color: rgba(216, 183, 102, .34);
+  background: rgba(11, 31, 27, .72);
+}
+
 .vision-features {
   display: grid;
   gap: 8px;

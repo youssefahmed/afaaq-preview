@@ -23,9 +23,7 @@
   const uploadPreviewInputs = document.querySelectorAll("[data-upload-preview-input]");
   const scrollTopButtons = document.querySelectorAll("[data-scroll-top]");
   const decorAnchorLinks = document.querySelectorAll(".decor-shell a[href*='#']");
-  const visionImage = document.querySelector("#visionImage");
-  const visionImagesScript = document.querySelector("#visionImages");
-  const visionButtons = document.querySelectorAll("[data-vision-direction]");
+  const visionSliders = document.querySelectorAll("[data-vision-slider]");
   const projectCategoryLinks = document.querySelectorAll(".projects-category-bar a[href^='#']");
   const themeNames = ["dark", "green", "white", "gold"];
   const isArabic = document.documentElement.lang !== "en";
@@ -95,7 +93,15 @@
     });
   }
 
-  if (visionImage && visionImagesScript) {
+  visionSliders.forEach((slider) => {
+    const visionImage = slider.querySelector("[data-vision-image]");
+    const visionImagesScript = slider.querySelector("[data-vision-images]");
+    const visionButtons = slider.querySelectorAll("[data-vision-direction]");
+
+    if (!visionImage || !visionImagesScript) {
+      return;
+    }
+
     const images = JSON.parse(visionImagesScript.textContent || "[]").filter(Boolean);
     let activeVisionImage = Math.max(0, images.indexOf(visionImage.getAttribute("src")));
     let visionTimer;
@@ -131,7 +137,7 @@
     });
 
     startVisionTimer();
-  }
+  });
 
   function scrollDecorTargetToComfortPosition(target, behavior = "smooth") {
     const header = document.querySelector("[data-decor-header]");
