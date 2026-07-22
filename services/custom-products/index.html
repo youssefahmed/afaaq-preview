@@ -1,130 +1,19 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منتجات أخرى | افاق التميز للصناعه</title>
-  <meta name="description" content="تصنيع حسب الطلب وحلول مخصصة للمنتجات والمشاريع الخاصة.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/afaaq-preview/css/site.css">
-</head>
-<body class="theme-dark">
-  <div class="app-shell" data-view="site">
-    <header class="topbar">
-      <a class="brand" href="/afaaq-preview" aria-label="الرئيسية">
-        <span class="brand-mark"><img src="/afaaq-preview/images/afaaq-logo.svg" alt="افاق التميز للصناعه"></span>
-        <span>
-          <strong>افاق التميز للصناعه</strong>
-          <small>حلول البولسترين والديكور</small>
-        </span>
-      </a>
-
-      <nav class="main-nav" aria-label="الرئيسية">
-        <a href="/afaaq-preview">الرئيسية</a>
-        <a href="#projects">الأعمال</a>
-        <a href="#booking">طلب خدمة</a>
-        <a class="language-link" href="/afaaq-preview/en/services/custom-products">English</a>
-        <label class="theme-select">
-          <span>الخلفية</span>
-          <select data-theme-picker aria-label="الخلفية">
-            <option value="dark">داكن</option>
-            <option value="green">أخضر</option>
-            <option value="white">أبيض</option>
-            <option value="gold">ذهبي</option>
-          </select>
-        </label>
-      </nav>
-    </header>
-
-    <main class="site-view">
-      <section class="service-hero">
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" alt="منتجات أخرى">
-        <div class="service-hero-copy">
-          <span class="badge">منتجات أخرى</span>
-          <h1>حلول بلا حدود</h1>
-          <p>تصنيع حسب الطلب وحلول مخصصة للمنتجات والمشاريع الخاصة.</p>
-          <a class="primary-btn" href="#booking">طلب خدمة</a>
-        </div>
-      </section>
-
-      <section class="section intro-section">
-        <div>
-          <span class="section-kicker">صفحات القسم</span>
-          <h2>منتجات أخرى</h2>
-        </div>
-        <p>هذه صفحة مستقلة لهذا القسم، ويمكن إدارة محتواها وصفحاتها الفرعية من لوحة الإدارة مع إبقاء نفس البيانات في الموقع وقاعدة البيانات.</p>
-      </section>
-
-      <section class="section decor-related-products">
-        <div class="section-head">
-          <span class="section-kicker">صفحات القسم</span>
-          <h2>ماذا نقدم في منتجات أخرى؟</h2>
-        </div>
-        <div class="decor-overview-grid">
-                      <a href="/afaaq-preview/services/custom-products/custom-manufacturing" class="decor-overview-card reveal-on-scroll">
-              <span>01</span>
-              <h3>تصنيع حسب الطلب</h3>
-              <p>منتجات مخصصة حسب المقاس والشكل المطلوب للمشروع.</p>
-            </a>
-                      <a href="/afaaq-preview/services/custom-products/special-project-solutions" class="decor-overview-card reveal-on-scroll">
-              <span>02</span>
-              <h3>حلول مشاريع خاصة</h3>
-              <p>حلول مخصصة للمشاريع التجارية والصناعية والإنشائية.</p>
-            </a>
-                  </div>
-      </section>
-
-      <section class="section projects-section" id="projects">
-        <div class="section-head">
-          <span class="section-kicker">الأعمال</span>
-          <h2>أعمال منتجات أخرى</h2>
-        </div>
-        <div class="project-grid">
-                      <article class="project-card">
-              <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&amp;fit=crop&amp;w=900&amp;q=75" alt="تصنيع عناصر مخصصة" loading="lazy">
-              <div>
-                <span>منتجات وخدمات أخرى</span>
-                <h3>تصنيع عناصر مخصصة</h3>
-                <p>حلول تصنيع مخصصة للمنتجات والمشاريع الخاصة.</p>
-              </div>
-            </article>
-                  </div>
-      </section>
-
-      <section class="section booking-section" id="booking">
-        <div class="booking-copy">
-          <span class="section-kicker">طلب خدمة</span>
-          <h2>أرسل طلب منتجات أخرى</h2>
-          <p>سيتم حفظ الطلب داخل قاعدة البيانات وسيتابعه فريق المبيعات مباشرة.</p>
-        </div>
-        <form class="booking-form" method="POST" action="/afaaq-preview/inquiries">
-          <input type="hidden" name="_token" value="2PDdk2O3ZhvrviZANKlVOdQxvXFBjqTIM6tQoA2m" autocomplete="off">          <label>
-            الاسم
-            <input name="name" type="text" placeholder="مثال: محمد العتيبي" value="" required>
-          </label>
-          <label>
-            رقم الجوال
-            <input name="phone" type="tel" placeholder="+966 5x xxx xxxx" value="" required>
-          </label>
-          <label>
-            الخدمة
-            <select name="service_id" required>
-                              <option value="1" >ديكورات فوم EPS</option>
-                              <option value="2" >ديكورات فوم PU</option>
-                              <option value="3" >صناعة الفعاليات</option>
-                              <option value="4" selected>منتجات أخرى</option>
-                          </select>
-          </label>
-          <label>
-            تفاصيل المشروع
-            <textarea name="message" rows="4" placeholder="اكتب وصفاً مختصراً للموقع، المناسبة، أو المنتج المطلوب" required></textarea>
-          </label>
-          <button class="primary-btn form-btn" type="submit">إرسال الطلب</button>
-                  </form>
-      </section>
-    </main>
-  </div>
-</body>
-</html>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>منتجات أخرى | افاق التميز للصناعه</title><meta name="description" content="حلول تغليف وعزل ومنتجات فلين هندسية تجمع بين خفة الوزن، الحماية، الكفاءة الحرارية، ومرونة التصنيع حسب الطلب."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/afaaq-preview/css/site.css"></head>
+<body class="other-page"><div class="other-shell" data-view="site"><header class="other-header"><a class="other-brand" href="/afaaq-preview/services/custom-products"><span><img src="/afaaq-preview/images/afaaq-logo.svg" alt="منتجات أخرى"></span><div><strong>منتجات أخرى</strong><small>مختبر المنتجات الصناعية</small></div></a><nav class="other-nav"><a class="language-link" href="/afaaq-preview/en/services/custom-products">English</a><a class="other-main-link" href="/afaaq-preview">الموقع الرئيسي</a><a href="#other-packaging">طرق تغليف أخرى</a><a href="#other-insulation">عزل حراري ومائي</a><a href="#other-concrete">بيتون</a><a href="#other-geofoam">جيو فوم</a><a href="#other-hordi">هوردي فلين</a><a href="#other-beads">حبيبات فلين</a><a href="#other-cubes">مكعبات فلين</a><a href="#other-bean-bags">بين باجز</a><a href="#other-boards">ألواح العزل</a></nav></header>
+<main><section class="other-hero"><div class="other-hero-grid"></div><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" alt="منتجات أخرى"><div class="other-hero-copy"><span class="other-kicker">حلول مصممة حول احتياج المشروع</span><h1>منتجات أخرى، بإمكانيات بلا حدود</h1><p>حلول تغليف وعزل ومنتجات فلين هندسية تجمع بين خفة الوزن، الحماية، الكفاءة الحرارية، ومرونة التصنيع حسب الطلب.</p><div><a class="other-primary-btn" href="#other-packaging">استكشف المنتجات</a><a class="other-outline-btn" href="/afaaq-preview#booking">اطلب حلاً مخصصاً</a></div></div><aside><b>09</b><span>PRODUCT<br>CATEGORIES</span></aside></section>
+<section class="other-category-index"><a href="#other-packaging"><b>01</b><span>طرق تغليف أخرى</span></a><a href="#other-insulation"><b>02</b><span>عزل حراري ومائي</span></a><a href="#other-concrete"><b>03</b><span>بيتون</span></a><a href="#other-geofoam"><b>04</b><span>جيو فوم</span></a><a href="#other-hordi"><b>05</b><span>هوردي فلين</span></a><a href="#other-beads"><b>06</b><span>حبيبات فلين</span></a><a href="#other-cubes"><b>07</b><span>مكعبات فلين</span></a><a href="#other-bean-bags"><b>08</b><span>بين باجز</span></a><a href="#other-boards"><b>09</b><span>ألواح العزل</span></a></section>
+ <section class="other-product-section " id="other-packaging"><div class="other-section-head"><span class="other-kicker">01 / فئة المنتجات</span><h2>طرق تغليف أخرى</h2><p>حلول حماية وتغليف مخصصة للمنتجات الحساسة والأشكال غير التقليدية.</p></div><div class="other-card-grid"><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/vacuum-packaging"><div><span>عرض المنتج</span><h3>تغليف بطريقة الفاكيوم</h3><p>حلول حماية وتغليف مخصصة للمنتجات الحساسة والأشكال غير التقليدية.</p></div><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="تغليف بطريقة الفاكيوم" loading="lazy"><b>↗</b></a><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/rock-board-packaging"><div><span>عرض المنتج</span><h3>تغليف بالألواح الصخرية</h3><p>حلول حماية وتغليف مخصصة للمنتجات الحساسة والأشكال غير التقليدية.</p></div><img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="تغليف بالألواح الصخرية" loading="lazy"><b>↗</b></a><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/printed-packaging"><div><span>عرض المنتج</span><h3>تغليف بالطباعة</h3><p>حلول حماية وتغليف مخصصة للمنتجات الحساسة والأشكال غير التقليدية.</p></div><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="تغليف بالطباعة" loading="lazy"><b>↗</b></a></div></section> <section class="other-product-section alternate" id="other-insulation"><div class="other-section-head"><span class="other-kicker">02 / فئة المنتجات</span><h2>عزل حراري ومائي</h2><p>أنظمة رش وعزل متكاملة لرفع كفاءة المباني وحماية الأسطح والمنشآت.</p></div><div class="other-card-grid"><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/polyurea-spray"><div><span>عرض المنتج</span><h3>رش بولي يوريا</h3><p>أنظمة رش وعزل متكاملة لرفع كفاءة المباني وحماية الأسطح والمنشآت.</p></div><img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="رش بولي يوريا" loading="lazy"><b>↗</b></a><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/polyurethane-spray"><div><span>عرض المنتج</span><h3>رش بولي يوريثان</h3><p>أنظمة رش وعزل متكاملة لرفع كفاءة المباني وحماية الأسطح والمنشآت.</p></div><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="رش بولي يوريثان" loading="lazy"><b>↗</b></a><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/supporting-insulation-services"><div><span>عرض المنتج</span><h3>عوازل وخدمات مساندة</h3><p>أنظمة رش وعزل متكاملة لرفع كفاءة المباني وحماية الأسطح والمنشآت.</p></div><img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="عوازل وخدمات مساندة" loading="lazy"><b>↗</b></a></div></section> <section class="other-product-section " id="other-concrete"><div class="other-section-head"><span class="other-kicker">03 / فئة المنتجات</span><h2>بيتون</h2><p>حلول خفيفة ومساندة لأعمال البيتون والتشكيل والقوالب الهندسية.</p></div><div class="other-card-grid"><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/concrete-solutions"><div><span>عرض المنتج</span><h3>حلول البيتون</h3><p>حلول خفيفة ومساندة لأعمال البيتون والتشكيل والقوالب الهندسية.</p></div><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="حلول البيتون" loading="lazy"><b>↗</b></a></div></section> <section class="other-product-section alternate" id="other-geofoam"><div class="other-section-head"><span class="other-kicker">04 / فئة المنتجات</span><h2>جيو فوم</h2><p>كتل EPS هندسية خفيفة للطرق والردم وتخفيف الأحمال في المشاريع المدنية.</p></div><div class="other-card-grid"><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/engineered-geofoam"><div><span>عرض المنتج</span><h3>جيو فوم هندسي</h3><p>كتل EPS هندسية خفيفة للطرق والردم وتخفيف الأحمال في المشاريع المدنية.</p></div><img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="جيو فوم هندسي" loading="lazy"><b>↗</b></a></div></section> <section class="other-product-section " id="other-hordi"><div class="other-section-head"><span class="other-kicker">05 / فئة المنتجات</span><h2>هوردي فلين</h2><p>قوالب فلين خفيفة للأسقف الهوردي تساعد على تقليل الوزن وتحسين العزل.</p></div><div class="other-card-grid"><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/eps-hordi-blocks"><div><span>عرض المنتج</span><h3>هوردي فلين</h3><p>قوالب فلين خفيفة للأسقف الهوردي تساعد على تقليل الوزن وتحسين العزل.</p></div><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="هوردي فلين" loading="lazy"><b>↗</b></a></div></section> <section class="other-product-section alternate" id="other-beads"><div class="other-section-head"><span class="other-kicker">06 / فئة المنتجات</span><h2>حبيبات فلين</h2><p>حبيبات EPS متعددة الاستخدامات للتعبئة والعزل والخلطات الخفيفة.</p></div><div class="other-card-grid"><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/eps-beads"><div><span>عرض المنتج</span><h3>حبيبات فلين</h3><p>حبيبات EPS متعددة الاستخدامات للتعبئة والعزل والخلطات الخفيفة.</p></div><img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="حبيبات فلين" loading="lazy"><b>↗</b></a></div></section> <section class="other-product-section " id="other-cubes"><div class="other-section-head"><span class="other-kicker">07 / فئة المنتجات</span><h2>مكعبات فلين</h2><p>مكعبات وأشكال فلين بمقاسات مخصصة للتعبئة والعرض والحماية.</p></div><div class="other-card-grid"><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/eps-cubes"><div><span>عرض المنتج</span><h3>مكعبات فلين</h3><p>مكعبات وأشكال فلين بمقاسات مخصصة للتعبئة والعرض والحماية.</p></div><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="مكعبات فلين" loading="lazy"><b>↗</b></a></div></section> <section class="other-product-section alternate" id="other-bean-bags"><div class="other-section-head"><span class="other-kicker">08 / فئة المنتجات</span><h2>بين باجز</h2><p>حشوات فلين خفيفة ومرنة لكراسي وأثاث البين باج.</p></div><div class="other-card-grid"><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/bean-bag-filling"><div><span>عرض المنتج</span><h3>حشوات بين باجز</h3><p>حشوات فلين خفيفة ومرنة لكراسي وأثاث البين باج.</p></div><img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="حشوات بين باجز" loading="lazy"><b>↗</b></a></div></section> <section class="other-product-section " id="other-boards"><div class="other-section-head"><span class="other-kicker">09 / فئة المنتجات</span><h2>ألواح العزل</h2><p>ألواح عزل EPS بمقاسات وكثافات متنوعة للجدران والأسطح والأرضيات.</p></div><div class="other-card-grid"><a class="other-product-card reveal-on-scroll" href="/afaaq-preview/services/custom-products/other-products/insulation-boards"><div><span>عرض المنتج</span><h3>ألواح العزل</h3><p>ألواح عزل EPS بمقاسات وكثافات متنوعة للجدران والأسطح والأرضيات.</p></div><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=1500&amp;q=86" alt="ألواح العزل" loading="lazy"><b>↗</b></a></div></section><section class="other-cta"><div><span class="other-kicker">CUSTOM / INDUSTRIAL</span><h2>منتجات أخرى، بإمكانيات بلا حدود</h2><p>منتجات صناعية مخصصة من آفاق التميز، من الفكرة والقياس حتى التصنيع والتوريد.</p></div><a class="other-primary-btn" href="/afaaq-preview#booking">اطلب حلاً مخصصاً</a></section></main>
+<footer class="other-footer"><div class="other-footer-brand"><span><img src="/afaaq-preview/images/afaaq-logo.svg" alt="منتجات أخرى"></span><div><strong>منتجات أخرى</strong><p>منتجات صناعية مخصصة من آفاق التميز، من الفكرة والقياس حتى التصنيع والتوريد.</p></div></div><div><strong>الأقسام</strong><a href="#other-packaging">طرق تغليف أخرى</a><a href="#other-insulation">عزل حراري ومائي</a><a href="#other-concrete">بيتون</a><a href="#other-geofoam">جيو فوم</a><a href="#other-hordi">هوردي فلين</a></div><div><strong>تواصل معنا</strong><span>920008660</span><span>info@hec-eps.com</span><span>الرياض - الخرج - المنطقة الصناعية، شارع 59</span></div><div class="other-footer-bottom"><span>© 2026 منتجات أخرى</span><a href="/afaaq-preview">الموقع الرئيسي</a></div></footer></div><div class="decor-floating-actions" aria-label="إجراءات سريعة">
+  <a class="decor-floating-btn whatsapp" href="https://wa.me/966920008660" target="_blank" rel="noreferrer" aria-label="تواصل عبر واتساب">
+    <span aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path d="M19.1 4.9A9.8 9.8 0 0 0 3.8 16.7L2.6 21l4.4-1.2A9.8 9.8 0 0 0 21.8 11a9.7 9.7 0 0 0-2.7-6.1Zm-7.1 14a8 8 0 0 1-4.1-1.1l-.3-.2-2.6.7.7-2.5-.2-.3a7.9 7.9 0 1 1 6.5 3.4Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.6.1a6.5 6.5 0 0 1-1.9-1.2 7.1 7.1 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5a.5.5 0 0 0 0-.5c-.1-.1-.6-1.4-.8-1.9-.2-.4-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.5 11.3 11.3 0 0 0 4.3 3.8c1.6.7 2.2.8 3 .7a2.5 2.5 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c-.1-.1-.3-.2-.6-.3Z" />
+      </svg>
+    </span>
+  </a>
+  <button class="decor-floating-btn top" type="button" data-scroll-top aria-label="العودة إلى أعلى الصفحة">
+    <span>↑</span>
+    <strong>أعلى</strong>
+  </button>
+</div>
+<script src="/afaaq-preview/js/site.js"></script></body></html>
