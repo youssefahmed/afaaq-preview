@@ -26,6 +26,12 @@
   const scrollTopButtons = document.querySelectorAll("[data-scroll-top]");
   const decorAnchorLinks = document.querySelectorAll(".decor-shell a[href*='#']");
   const visionSliders = document.querySelectorAll("[data-vision-slider]");
+  const materialLabs = document.querySelectorAll("[data-material-lab]");
+  const eventHero = document.querySelector("[data-event-hero]");
+  const eventHeader = document.querySelector(".event-header");
+  const eventCards = document.querySelectorAll("[data-event-card]");
+  const eventFireworks = document.querySelector("[data-event-fireworks]");
+  const eventSortableGrids = document.querySelectorAll("[data-event-sortable-grid]");
   const projectCategoryLinks = document.querySelectorAll(".projects-category-bar a[href^='#']");
   const themeNames = ["dark", "green", "white", "gold"];
   const isArabic = document.documentElement.lang !== "en";
@@ -139,6 +145,354 @@
     });
 
     startVisionTimer();
+  });
+
+  materialLabs.forEach((lab) => {
+    const stage = lab.querySelector(".decor-material-stage");
+    const image = lab.querySelector("[data-material-image]:not(button)");
+    const title = lab.querySelector("[data-material-title]:not(button)");
+    const link = lab.querySelector("[data-material-link]");
+    const counter = lab.querySelector("[data-material-counter]");
+    const options = Array.from(lab.querySelectorAll("[data-material-option]"));
+    let changeTimer;
+
+    if (!stage || !image || !title || !link || !options.length) {
+      return;
+    }
+
+    options.forEach((option, index) => {
+      option.addEventListener("click", () => {
+        if (option.classList.contains("is-active")) {
+          return;
+        }
+
+        options.forEach((entry) => {
+          const isCurrent = entry === option;
+          entry.classList.toggle("is-active", isCurrent);
+          entry.setAttribute("aria-pressed", String(isCurrent));
+        });
+
+        stage.classList.add("is-changing");
+        window.clearTimeout(changeTimer);
+        changeTimer = window.setTimeout(() => {
+          image.src = option.dataset.materialImage || image.src;
+          image.alt = option.dataset.materialTitle || "";
+          title.textContent = option.dataset.materialTitle || "";
+          link.href = option.dataset.materialUrl || "#";
+          if (counter) {
+            counter.textContent = String(index + 1).padStart(2, "0");
+          }
+          stage.classList.remove("is-changing");
+        }, 260);
+      });
+    });
+  });
+
+  if (eventHeader) {
+    const updateEventHeader = () => {
+      eventHeader.classList.toggle("is-event-scrolled", window.scrollY > 40);
+    };
+
+    updateEventHeader();
+    window.addEventListener("scroll", updateEventHeader, { passive: true });
+  }
+
+  if (
+    eventFireworks
+    && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    const context = eventFireworks.getContext("2d");
+    const particles = [];
+    const rockets = [];
+    const colors = ["#ff5d3d", "#ffb340", "#a34dff", "#38d9ff", "#fff2b8", "#ff55a5"];
+    const startTime = performance.now();
+    const showDuration = 4200;
+    let lastBurst = 0;
+    let animationFrame;
+
+    const resizeFireworks = () => {
+      const bounds = eventFireworks.getBoundingClientRect();
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      eventFireworks.width = Math.max(1, Math.round(bounds.width * ratio));
+      eventFireworks.height = Math.max(1, Math.round(bounds.height * ratio));
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    };
+
+    const createBurst = (x, y, color) => {
+      const count = 44 + Math.floor(Math.random() * 28);
+
+      for (let index = 0; index < count; index += 1) {
+        const angle = (Math.PI * 2 * index) / count + Math.random() * 0.13;
+        const speed = 1.4 + Math.random() * 4.2;
+        particles.push({
+          x,
+          y,
+          previousX: x,
+          previousY: y,
+          velocityX: Math.cos(angle) * speed,
+          velocityY: Math.sin(angle) * speed,
+          life: 1,
+          decay: 0.011 + Math.random() * 0.013,
+          color,
+          size: 1 + Math.random() * 1.7,
+        });
+      }
+    };
+
+    const launchRocket = () => {
+      const width = eventFireworks.clientWidth;
+      const height = eventFireworks.clientHeight;
+      const x = width * (0.12 + Math.random() * 0.76);
+
+      rockets.push({
+        x,
+        y: height + 20,
+        previousX: x,
+        previousY: height + 20,
+        velocityX: -0.45 + Math.random() * 0.9,
+        velocityY: -(7.5 + Math.random() * 3),
+        targetY: height * (0.12 + Math.random() * 0.35),
+        color: colors[Math.floor(Math.random() * colors.length)],
+      });
+    };
+
+    const drawFireworks = (time) => {
+      const elapsed = time - startTime;
+      context.globalCompositeOperation = "source-over";
+      context.clearRect(0, 0, eventFireworks.clientWidth, eventFireworks.clientHeight);
+      context.globalCompositeOperation = "lighter";
+
+      if (elapsed < 3100 && time - lastBurst > 520 + Math.random() * 260) {
+        launchRocket();
+        if (Math.random() > 0.55) {
+          window.setTimeout(launchRocket, 150);
+        }
+        lastBurst = time;
+      }
+
+      for (let index = rockets.length - 1; index >= 0; index -= 1) {
+        const rocket = rockets[index];
+        rocket.previousX = rocket.x;
+        rocket.previousY = rocket.y;
+        rocket.x += rocket.velocityX;
+        rocket.y += rocket.velocityY;
+        rocket.velocityY += 0.018;
+
+        context.beginPath();
+        context.moveTo(rocket.previousX, rocket.previousY + 18);
+        context.lineTo(rocket.x, rocket.y);
+        context.strokeStyle = rocket.color;
+        context.globalAlpha = .9;
+        context.lineWidth = 2.2;
+        context.stroke();
+
+        context.beginPath();
+        context.arc(rocket.x, rocket.y, 2.6, 0, Math.PI * 2);
+        context.fillStyle = "#fff";
+        context.fill();
+
+        if (rocket.y <= rocket.targetY || rocket.velocityY >= -1.5) {
+          createBurst(rocket.x, rocket.y, rocket.color);
+          rockets.splice(index, 1);
+        }
+      }
+
+      for (let index = particles.length - 1; index >= 0; index -= 1) {
+        const particle = particles[index];
+        particle.previousX = particle.x;
+        particle.previousY = particle.y;
+        particle.velocityX *= 0.985;
+        particle.velocityY = (particle.velocityY * 0.985) + 0.035;
+        particle.x += particle.velocityX;
+        particle.y += particle.velocityY;
+        particle.life -= particle.decay;
+
+        context.beginPath();
+        context.moveTo(particle.previousX, particle.previousY);
+        context.lineTo(particle.x, particle.y);
+        context.strokeStyle = particle.color;
+        context.globalAlpha = Math.max(0, particle.life);
+        context.lineWidth = particle.size;
+        context.stroke();
+
+        if (particle.life <= 0) {
+          particles.splice(index, 1);
+        }
+      }
+
+      context.globalAlpha = 1;
+      if (elapsed < showDuration || particles.length || rockets.length) {
+        animationFrame = window.requestAnimationFrame(drawFireworks);
+      } else {
+        eventFireworks.classList.add("is-finished");
+        window.setTimeout(() => {
+          eventFireworks.hidden = true;
+        }, 950);
+      }
+    };
+
+    resizeFireworks();
+    launchRocket();
+    window.setTimeout(launchRocket, 180);
+    window.addEventListener("resize", resizeFireworks, { passive: true });
+    animationFrame = window.requestAnimationFrame(drawFireworks);
+
+    window.addEventListener("pagehide", () => {
+      window.cancelAnimationFrame(animationFrame);
+    }, { once: true });
+  } else if (eventFireworks) {
+    eventFireworks.hidden = true;
+  }
+
+  if (
+    eventHero
+    && window.matchMedia("(pointer: fine)").matches
+    && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    const heroImage = eventHero.querySelector(":scope > img");
+    const heroCopy = eventHero.querySelector(".event-hero-copy");
+
+    eventHero.addEventListener("mousemove", (event) => {
+      const bounds = eventHero.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width) - 0.5;
+      const y = ((event.clientY - bounds.top) / bounds.height) - 0.5;
+
+      if (heroImage) {
+        heroImage.style.setProperty("translate", `${x * -12}px ${y * -8}px`);
+      }
+      if (heroCopy) {
+        heroCopy.style.transform = `translate3d(${x * 10}px, ${y * 7}px, 0)`;
+      }
+    }, { passive: true });
+
+    eventHero.addEventListener("mouseleave", () => {
+      if (heroImage) {
+        heroImage.style.removeProperty("translate");
+      }
+      if (heroCopy) {
+        heroCopy.style.transform = "";
+      }
+    });
+  }
+
+  if (
+    eventCards.length
+    && window.matchMedia("(pointer: fine)").matches
+    && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    eventCards.forEach((card) => {
+      card.addEventListener("mousemove", (event) => {
+        const bounds = card.getBoundingClientRect();
+        card.style.setProperty("--event-card-x", `${event.clientX - bounds.left}px`);
+        card.style.setProperty("--event-card-y", `${event.clientY - bounds.top}px`);
+      }, { passive: true });
+    });
+  }
+
+  eventSortableGrids.forEach((grid) => {
+    const storageKey = `afaaqEventOrder:${document.documentElement.lang}:${grid.dataset.eventSortKey || "section"}`;
+    let draggedCard = null;
+    let didDrag = false;
+
+    const saveOrder = () => {
+      const order = Array.from(grid.querySelectorAll("[data-event-sort-id]"))
+        .map((card) => card.dataset.eventSortId);
+      window.localStorage.setItem(storageKey, JSON.stringify(order));
+    };
+
+    try {
+      const savedOrder = JSON.parse(window.localStorage.getItem(storageKey) || "[]");
+      const cardsById = new Map(
+        Array.from(grid.querySelectorAll("[data-event-sort-id]"))
+          .map((card) => [card.dataset.eventSortId, card])
+      );
+      savedOrder.forEach((id) => {
+        if (cardsById.has(id)) {
+          grid.appendChild(cardsById.get(id));
+        }
+      });
+    } catch (error) {
+      window.localStorage.removeItem(storageKey);
+    }
+
+    grid.addEventListener("dragstart", (event) => {
+      const card = event.target.closest("[data-event-sort-id]");
+      if (!card) {
+        return;
+      }
+
+      draggedCard = card;
+      didDrag = true;
+      grid.classList.add("is-reordering");
+      card.classList.add("is-dragging");
+      event.dataTransfer.effectAllowed = "move";
+      event.dataTransfer.setData("text/plain", card.dataset.eventSortId || "");
+    });
+
+    grid.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      const target = event.target.closest("[data-event-sort-id]");
+      if (!draggedCard || !target || target === draggedCard) {
+        return;
+      }
+
+      grid.querySelectorAll(".is-drag-target").forEach((card) => {
+        card.classList.remove("is-drag-target");
+      });
+      target.classList.add("is-drag-target");
+
+      const bounds = target.getBoundingClientRect();
+      const insertAfter = event.clientX > bounds.left + (bounds.width / 2);
+      grid.insertBefore(draggedCard, insertAfter ? target.nextSibling : target);
+    });
+
+    grid.addEventListener("drop", (event) => {
+      event.preventDefault();
+      saveOrder();
+    });
+
+    grid.addEventListener("dragend", () => {
+      grid.classList.remove("is-reordering");
+      grid.querySelectorAll(".is-dragging, .is-drag-target").forEach((card) => {
+        card.classList.remove("is-dragging", "is-drag-target");
+      });
+      saveOrder();
+      window.setTimeout(() => {
+        didDrag = false;
+      }, 0);
+      draggedCard = null;
+    });
+
+    grid.addEventListener("click", (event) => {
+      const handle = event.target.closest("[data-event-drag-handle]");
+      const card = event.target.closest("[data-event-sort-id]");
+
+      if (handle && card) {
+        event.preventDefault();
+        const cards = Array.from(grid.querySelectorAll("[data-event-sort-id]"));
+        const cardIndex = cards.indexOf(card);
+        const nextCard = cards[cardIndex + 1] || cards[0];
+        if (nextCard && nextCard !== card) {
+          grid.insertBefore(card, nextCard === cards[0] ? cards[0] : nextCard.nextSibling);
+          saveOrder();
+        }
+        return;
+      }
+
+      if (didDrag) {
+        event.preventDefault();
+      }
+    });
+
+    grid.addEventListener("keydown", (event) => {
+      const handle = event.target.closest("[data-event-drag-handle]");
+      if (!handle || !["Enter", " ", "ArrowLeft", "ArrowRight"].includes(event.key)) {
+        return;
+      }
+
+      event.preventDefault();
+      handle.click();
+    });
   });
 
   function scrollDecorTargetToComfortPosition(target, behavior = "smooth") {
